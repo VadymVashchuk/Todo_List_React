@@ -11,7 +11,7 @@ type TaskListProps = {
 }
 
 export type TaskType = {
-  id: number
+  id: string
   body: string
   status: boolean
 }

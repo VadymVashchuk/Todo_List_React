@@ -19,7 +19,7 @@ type PostType = {
 const TodoItem = (props: PostType) => {
   const {index, post, deleteItem, changeStatus, setAddingFormStatus, setEditInput, setItemEditingId} = props;
 
-  function editItemText(itemtext: string, itemId: number) {
+  function editItemText(itemtext: string, itemId: string) {
     setEditInput(itemtext)
     setAddingFormStatus('edit')
     setItemEditingId(itemId)
