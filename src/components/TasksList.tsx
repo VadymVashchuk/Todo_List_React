@@ -5,6 +5,9 @@ type TaskListProps = {
   tasks: Array<TaskType>
   deleteItem: Function
   changeStatus: Function
+  setAddingFormStatus: Function
+  setEditInput: Function
+  setItemEditingId: Function
 }
 
 export type TaskType = {
@@ -16,7 +19,7 @@ export type TaskType = {
 const TasksList = (props: TaskListProps) => {
   return (
     <>
-      {props.tasks.map((item: TaskType) => <TodoItem index={props.tasks.indexOf(item)} post={item} key={item.id} deleteItem={props.deleteItem} changeStatus={props.changeStatus}/>)}
+      {props.tasks.map((item: TaskType) => <TodoItem index={props.tasks.indexOf(item)} post={item} key={item.id} deleteItem={props.deleteItem} changeStatus={props.changeStatus} setAddingFormStatus={props.setAddingFormStatus} setEditInput={props.setEditInput} setItemEditingId={props.setItemEditingId}/>)}
     </>
   )
 }

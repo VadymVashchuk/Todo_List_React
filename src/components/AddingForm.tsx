@@ -2,32 +2,51 @@ import React, { useState } from 'react'
 import { TextField, Button, Box } from '@mui/material';
 
 type AddFormStatus = {
-  addingFormStatus: boolean
+  addingFormStatus: string
   setAddingFormStatus: Function
   addNewItem: Function
+  editInput: string
+  setEditInput: Function
+  editItem: Function
 }
 
 const AddingForm = (props: AddFormStatus) => {
 
-  const {addingFormStatus, setAddingFormStatus, addNewItem} = props;
-  const [editInput, setEditInput] = useState('');
+  const { addingFormStatus, setAddingFormStatus, addNewItem, editInput, setEditInput, editItem } = props;
+
 
   const cancelEditing = () => {
     setEditInput('')
-    setAddingFormStatus(false)
+    setAddingFormStatus('none')
   }
 
   function saveItem() {
-    addNewItem(editInput)
-    cancelEditing()
+    if (editInput !== '') {
+      addNewItem(editInput)
+      cancelEditing()
+    } else {
+      window.alert("Field can't be empty")
+    }
+  }
+
+  function saveEditedItem() {
+    if (editInput !== '') {
+      editItem()
+      cancelEditing()
+    } else {
+      window.alert("Field can't be empty")
+    }
   }
 
   return (
-    <Box className={addingFormStatus ? 'modal-window' : 'modal-window off'}>
+    <Box className={addingFormStatus === 'add' || addingFormStatus === 'edit' ? 'modal-window' : 'modal-window off'}>
       <Box className="modal-window-content">
         <TextField onChange={e => setEditInput(e.target.value)} id="outlined-basic" label="Task description" variant="outlined" autoComplete='off' value={editInput} />
-        <Button onClick={() => saveItem()} variant="contained" color="success">
+        <Button onClick={() => saveItem()} variant="contained" color="success" style={{ display: addingFormStatus === 'add' ? 'block' : 'none' }} className='off'>
           Add
+        </Button>
+        <Button onClick={() => saveEditedItem()} variant="contained" color="success" style={{ display: addingFormStatus === 'edit' ? 'block' : 'none' }}>
+          Save
         </Button>
         <Button onClick={() => cancelEditing()} variant="outlined" color="error">
           Cancel

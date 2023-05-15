@@ -24,7 +24,10 @@ function App() {
   ])
 
   const [filter, setFilter] = useState('All')
-  const [addingFormStatus, setAddingFormStatus] = useState(false)
+  const [addingFormStatus, setAddingFormStatus] = useState('none')
+  const [editInput, setEditInput] = useState('');
+  const [itemEditingId, setItemEditingId] = useState(0);
+
 
   function deleteItem(itemId: number) {
     setTasks(tasks.filter(el => el.id !== itemId))
@@ -49,6 +52,14 @@ function App() {
     setTasks([...tasks, newTask])
   }
 
+  function editItem() {
+    let task = tasks.find(el => el.id === itemEditingId)
+    if (task) {
+      task.body = editInput;
+    }
+    setTasks([...tasks])
+  }
+
   let filteredTasks = tasks;
   if (filter === 'Completed') {
     filteredTasks = tasks.filter(i => i.status === true)
@@ -64,8 +75,8 @@ function App() {
     <div className="App">
       <PageTitle />
       <Header filter={filter} setFilter={setFilter} addingFormStatus={addingFormStatus} setAddingFormStatus={setAddingFormStatus} />
-      <TasksList tasks={sortedTasks} deleteItem={deleteItem} changeStatus={changeStatus} />
-      <AddingForm addingFormStatus={addingFormStatus} setAddingFormStatus={setAddingFormStatus} addNewItem={addNewItem} />
+      <TasksList tasks={sortedTasks} deleteItem={deleteItem} changeStatus={changeStatus} setAddingFormStatus={setAddingFormStatus} setEditInput={setEditInput} setItemEditingId={setItemEditingId}/>
+      <AddingForm editInput={editInput} setEditInput={setEditInput} addingFormStatus={addingFormStatus} setAddingFormStatus={setAddingFormStatus} addNewItem={addNewItem} editItem={editItem} />
     </div>
   );
 }

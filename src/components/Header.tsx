@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 type HeaderProps = {
   filter: string
   setFilter: Function
-  addingFormStatus: boolean
+  addingFormStatus: string
   setAddingFormStatus: Function
 }
 
@@ -23,7 +23,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <Box className="header-box">
-      <Button onClick={() => setAddingFormStatus(true) } variant="contained" className='add-task-btn'>ADD TASK</Button>
+      <Button onClick={() => setAddingFormStatus('add') } variant="contained" className='add-task-btn'>ADD TASK</Button>
       <Box sx={{ minWidth: 140 }}>
         <FormControl fullWidth>
           <Select

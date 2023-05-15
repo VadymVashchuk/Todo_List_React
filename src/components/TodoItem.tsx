@@ -4,7 +4,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { TaskType } from './TasksList';
 import classnames from 'classnames';
-import EditForm from './EditForm';
 
 
 type PostType = {
@@ -12,10 +11,19 @@ type PostType = {
   post: TaskType
   deleteItem: Function
   changeStatus: Function
+  setAddingFormStatus: Function
+  setEditInput: Function
+  setItemEditingId: Function
 }
 
 const TodoItem = (props: PostType) => {
-  const {index, post, deleteItem, changeStatus} = props;
+  const {index, post, deleteItem, changeStatus, setAddingFormStatus, setEditInput, setItemEditingId} = props;
+
+  function editItemText(itemtext: string, itemId: number) {
+    setEditInput(itemtext)
+    setAddingFormStatus('edit')
+    setItemEditingId(itemId)
+  }
 
   // СКАЧУЮ УТИЛІТУ 'npm install classnames'
 
@@ -30,7 +38,7 @@ const TodoItem = (props: PostType) => {
         sx={{ '& .MuiSvgIcon-root': { fontSize: 40 } }}
         inputProps={{ 'aria-label': 'controlled' }}
       />
-      <EditIcon onClick={() => <EditForm/>} style={{ fontSize: 35 }} className='btn__el'/>
+      <EditIcon onClick={() => editItemText(post.body, post.id)} style={{ fontSize: 35 }} className='btn__el'/>
       <DeleteIcon onClick={() => deleteItem(post.id)} style={{ fontSize: 40 }} className='btn__el del-btn'/>
     </Box>
   )
