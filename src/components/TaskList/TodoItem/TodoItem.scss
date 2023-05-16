@@ -1,0 +1,51 @@
+@import "../../../css/palette.scss";
+
+.todo-item {
+  width: 800px;
+  height: 70px;
+  padding: 0px 25px;
+  border: 5px solid $color2;
+  background-color: rgba(255, 255, 255, 0.466);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.checkbox-item {
+  * {
+    color: $color1;
+  }
+}
+
+.btn__el {
+  background-color: rgba(253, 253, 253, 0.651);
+  * {
+    color: $color3a;
+  }
+}
+
+.btn__el:hover {
+  cursor: pointer;
+  background-color: $color8;
+  box-shadow: 0 0 0 5px #30303011;
+  * {
+    color: $color2;
+  }
+}
+
+.del-btn {
+  &:hover {
+    cursor: pointer;
+    * {
+      color: $color7;
+    }
+  }
+}
+
+.taskIsDone {
+  background-color: rgba(134, 134, 134, 0.589);
+  .btn__el {
+    background-color: rgba(255, 255, 255, 0.151);
+  }
+}
