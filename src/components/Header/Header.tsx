@@ -4,12 +4,12 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 
 import './Header.scss'
-import { HeaderProps } from '../../types/types';
+import { HeaderProps } from '../../models/types';
+
 
 const Header = (props: HeaderProps) => {
 
-  const { filter, setFilter } = props;
-  const { addingFormStatus, setAddingFormStatus } = props;
+  const { filter, setFilter, setAddingFormStatus } = props;
 
   const handleChange = (event: SelectChangeEvent) => {
     setFilter(event.target.value as string);

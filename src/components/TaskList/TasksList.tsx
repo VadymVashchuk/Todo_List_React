@@ -1,5 +1,6 @@
 import TodoItem from "./TodoItem/TodoItem";
-import { TaskListProps, TaskType } from "../../types/types";
+import { TaskListProps, TaskType } from "../../models/types";
+
 
 const TasksList = (props: TaskListProps) => {
   return (
@@ -9,8 +10,6 @@ const TasksList = (props: TaskListProps) => {
           index={props.tasks.indexOf(item)}
           post={item}
           key={item.id}
-          deleteItem={props.deleteItem}
-          changeStatus={props.changeStatus}
           setAddingFormStatus={props.setAddingFormStatus}
           setEditInput={props.setEditInput}
           setItemEditingId={props.setItemEditingId}

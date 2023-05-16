@@ -1,16 +1,17 @@
 import { TextField, Button, Box } from "@mui/material";
 
 import './AddingForm.scss'
-import { AddFormStatus } from "../../types/types";
+import { AddFormStatus } from "../../models/types";
+import { addNewItem, editItem } from "../../helper/FirebaseFunctions";
+
 
 const AddingForm = (props: AddFormStatus) => {
   const {
     addingFormStatus,
     setAddingFormStatus,
-    addNewItem,
     editInput,
     setEditInput,
-    editItem,
+    itemEditingId,
   } = props;
 
   const cancelEditing = () => {
@@ -29,7 +30,7 @@ const AddingForm = (props: AddFormStatus) => {
 
   function saveEditedItem() {
     if (editInput !== "") {
-      editItem();
+      editItem(itemEditingId, editInput);
       cancelEditing();
     } else {
       window.alert("Field can't be empty");

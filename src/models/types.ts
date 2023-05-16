@@ -7,24 +7,20 @@ export interface Task {
 export interface AddFormStatus {
   addingFormStatus: string;
   setAddingFormStatus: Function;
-  addNewItem: Function;
   editInput: string;
   setEditInput: Function;
-  editItem: Function;
+  itemEditingId: string;
 }
 
 export interface HeaderProps {
   filter: string;
   setFilter: Function;
-  addingFormStatus: string;
   setAddingFormStatus: Function;
 }
 
 export interface PostType {
   index: number;
   post: TaskType;
-  deleteItem: Function;
-  changeStatus: Function;
   setAddingFormStatus: Function;
   setEditInput: Function;
   setItemEditingId: Function;
@@ -38,8 +34,6 @@ export type TaskType = {
 
 export interface TaskListProps {
   tasks: Array<TaskType>;
-  deleteItem: Function;
-  changeStatus: Function;
   setAddingFormStatus: Function;
   setEditInput: Function;
   setItemEditingId: Function;

@@ -3,12 +3,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import './TodoItem.scss'
-import { PostType } from '../../../types/types';
-
+import { PostType } from '../../../models/types';
+import { changeStatus, deleteItem } from '../../../helper/FirebaseFunctions';
 
 
 const TodoItem = (props: PostType) => {
-  const { index, post, deleteItem, changeStatus, setAddingFormStatus, setEditInput, setItemEditingId } = props;
+  const { index, post, setAddingFormStatus, setEditInput, setItemEditingId } = props;
 
   function editItemText(itemtext: string, itemId: string) {
     setEditInput(itemtext)
