@@ -1,21 +1,15 @@
-import React from 'react'
 import { Box, Button } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 
-type HeaderProps = {
-  filter: string
-  setFilter: Function
-  addingFormStatus: string
-  setAddingFormStatus: Function
-}
+import './Header.scss'
+import { HeaderProps } from '../../models/types';
+
 
 const Header = (props: HeaderProps) => {
 
-  const {filter, setFilter} = props;
-  const {addingFormStatus, setAddingFormStatus} = props;
-
+  const { filter, setFilter, setAddingFormStatus } = props;
 
   const handleChange = (event: SelectChangeEvent) => {
     setFilter(event.target.value as string);
@@ -23,7 +17,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <Box className="header-box">
-      <Button onClick={() => setAddingFormStatus('add') } variant="contained" className='add-task-btn'>ADD TASK</Button>
+      <Button onClick={() => setAddingFormStatus('add')} variant="contained" className='add-task-btn'>ADD TASK</Button>
       <Box sx={{ minWidth: 140 }}>
         <FormControl fullWidth>
           <Select
@@ -38,7 +32,6 @@ const Header = (props: HeaderProps) => {
         </FormControl>
       </Box>
     </Box>
-
   )
 }
 
