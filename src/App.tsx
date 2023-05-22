@@ -42,7 +42,7 @@ function App() {
         Number(b.status < a.status) - Number(a.status < b.status) ||
         Number(b.body < a.body) - Number(a.body < b.body)
     ) || [])
-  }, [tasks])
+  }, [filteredTasks])
 
 
   return (
